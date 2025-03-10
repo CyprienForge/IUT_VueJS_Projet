@@ -2,6 +2,7 @@
 
 import DeckService from "@/services/DeckService.js";
 import {onMounted, ref} from "vue";
+import AddDeck from "@/components/AddDeck.vue";
 
 const deckService = new DeckService();
 const decks = ref()
@@ -16,6 +17,8 @@ onMounted(async () => {
   <h1>
     My Deck
   </h1>
+
+  <AddDeck/>
 
     <ul>
       <li v-for="deck in decks" :key="deck.id">

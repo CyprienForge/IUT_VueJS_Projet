@@ -22,9 +22,11 @@ onMounted(async () => {
 
     <ul>
       <li v-for="deck in decks" :key="deck.id">
-        <p>
-          {{ deck.name }}
-        </p>
+        <RouterLink :to="`/deck/${deck.id}`">
+          <p>
+            {{ deck.name }}
+          </p>
+        </RouterLink>
       </li>
     </ul>
 

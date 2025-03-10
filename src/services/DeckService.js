@@ -12,4 +12,10 @@ export default class DeckService {
         return decks
     }
 
+    async getOneDeck(id){
+        const url = 'https://67b8eac151192bd378dc35a6.mockapi.io/decks/' + id
+        const deck = await this.service.getOne(url, 'GET')
+        return deck
+    }
+
 }

@@ -1,12 +1,19 @@
 <script setup>
 
+import LinkService from "@/services/LinkService.js";
+
+const linkService = new LinkService()
+const links = linkService.getLinks()
+
 </script>
 
 <template>
-  <RouterLink to="/">Home</RouterLink>
-  <RouterLink to="/all">All Cards</RouterLink>
-  <RouterLink to="/deck">My Deck</RouterLink>
-  <RouterLink to="/open">Open a Booster</RouterLink>
+
+  <ul v-for="link in links" style="display: inline-block">
+    <RouterLink :to="`${link.path}`">
+      {{ link.label }}
+    </RouterLink>
+  </ul>
 </template>
 
 <style scoped>

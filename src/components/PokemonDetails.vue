@@ -23,7 +23,7 @@ onMounted(async () => {
   <div v-if="card">
     <h2>{{ card.category }} - {{ card.name }}</h2>
 
-    <img :src="`${card.image}/high.png`">
+    <img :src="`${card.image}/low.png`">
   </div>
 </template>
 

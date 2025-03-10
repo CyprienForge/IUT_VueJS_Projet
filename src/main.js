@@ -9,6 +9,7 @@ import AllCards from "@/components/AllCards.vue";
 import MyDeck from "@/components/MyDeck.vue";
 import OpenBooster from "@/components/OpenBooster.vue";
 import PokemonDetails from "@/components/PokemonDetails.vue";
+import DeckDetails from "@/components/DeckDetails.vue";
 
 const routes = [
     { path: '/', component: Home },
@@ -16,6 +17,7 @@ const routes = [
     { path: '/deck', component: MyDeck },
     { path: '/open', component: OpenBooster },
     { path: '/all/:id', component: PokemonDetails, props: true },
+    { path: '/deck/:id', component: DeckDetails, props: true }
 ]
 
 const router = createRouter({

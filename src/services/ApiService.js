@@ -19,7 +19,7 @@ export default class ApiService {
         })
         const card = response.json()
 
-        console.log("Récupération d'un pokémon effectuée !")
+        console.log("Récupération d'un élément effectuée !")
 
         return card
     }

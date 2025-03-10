@@ -3,8 +3,10 @@
 import BoosterService from "@/services/BoosterService.js";
 import {onMounted, ref} from "vue";
 import LocalStorageService from "@/services/LocalStorageService.js";
+import CardService from "@/services/CardService.js";
 
 const boosterService = new BoosterService()
+const cardService = new CardService()
 const localStorageService = new LocalStorageService()
 const boosters = ref()
 
@@ -13,10 +15,15 @@ onMounted(async() => {
   console.log(boosters.value)
 })
 
-function storage() {
-  const id = Math.floor(Math.random() * 5); // Génère un index entre 0 et 4
+async function storage(idBooster) {
+  const idCard = Math.floor(Math.random() * 5);
+  const booster = boosters.value[idBooster-1]
+  console.log(booster)
 
-  console.log(boosters.value[id]); // Accède à l'élément correctement
+  const cardId = booster.cards[idCard]
+  const card = await cardService.getOneCard(cardId)
+  localStorageService.addCardGetByBooster(card)
+  console.log("Booster ouvert ====> " + card)
 }
 
 </script>
@@ -28,7 +35,7 @@ function storage() {
 
   <div v-if="boosters">
     <ul v-for="booster in boosters" :key="booster.id">
-      <li @click="storage" style="cursor: pointer">
+      <li @click="storage(booster.id)" style="cursor: pointer">
         {{ booster.name }}
       </li>
     </ul>

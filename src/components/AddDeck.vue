@@ -1,9 +1,11 @@
 <script setup>
 
 import {ref} from "vue";
+import DeckService from "@/services/DeckService.js";
 
 const nameDeck = ref()
 const nameError = ref(false)
+const services = new DeckService()
 
 function submitForm(event){
 
@@ -11,6 +13,13 @@ function submitForm(event){
 
   console.log(nameError.value)
   console.log(nameDeck.value)
+
+  const newDeck = {
+    name: nameDeck.value,
+    idUser: Math.floor(Math.random()*(11-0)+0)
+  }
+
+  services.createOneDeck(newDeck)
 }
 
 function validNameDeck(){

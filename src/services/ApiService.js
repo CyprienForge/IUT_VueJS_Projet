@@ -24,4 +24,20 @@ export default class ApiService {
         return card
     }
 
+    async createOne(url, data){
+
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        })
+        const deck = response.json()
+
+        console.log("Deck crÃ©e !")
+
+        return deck
+    }
+
 }

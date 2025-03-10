@@ -18,4 +18,10 @@ export default class DeckService {
         return deck
     }
 
+    async createOneDeck(newDeck) {
+        const deck = await this.service.createOne('https://67b8eac151192bd378dc35a6.mockapi.io/decks', newDeck)
+        console.log("création d'un deck !", deck)
+        return deck
+    }
+
 }

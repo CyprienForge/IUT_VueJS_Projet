@@ -7,19 +7,17 @@ const nameDeck = ref()
 const nameError = ref(false)
 const services = new DeckService()
 
-function submitForm(event){
+async function submitForm(event){
 
   validNameDeck()
-
-  console.log(nameError.value)
-  console.log(nameDeck.value)
 
   const newDeck = {
     name: nameDeck.value,
     idUser: Math.floor(Math.random()*(11-0)+0)
   }
 
-  services.createOneDeck(newDeck)
+  await services.createOneDeck(newDeck)
+  location.reload('/deck');
 }
 
 function validNameDeck(){

@@ -14,7 +14,6 @@ const deck = ref()
 
 onMounted(async() => {
   deck.value = await deckService.getOneDeck(props.id)
-  console.log("Cartes du deck courant : ")
   console.log(deck.value.cards)
 })
 
@@ -29,7 +28,7 @@ onMounted(async() => {
 
     <ul v-for="card in deck.cards">
       <li>
-        <PokemonDetails :id="card.id" />
+        <PokemonDetails :id="card" />
       </li>
     </ul>
 
@@ -38,5 +37,7 @@ onMounted(async() => {
 </template>
 
 <style scoped>
-
+h2{
+  text-align: center;
+}
 </style>

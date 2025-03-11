@@ -4,35 +4,24 @@ import CardService from "@/services/CardService.js";
 import {onMounted, ref} from "vue";
 import LocalStorageService from "@/services/LocalStorageService.js";
 import DeckService from "@/services/DeckService.js";
+import AddCardToDeck from "@/components/AddCardToDeck.vue";
 
 const props = defineProps({
   id: String,
 })
 
-console.log(props.id)
-
 const service = new CardService()
-const deckService = new DeckService()
 const localStorage = new LocalStorageService()
 const card = ref()
 const isObtain = ref(false)
-const selectedDeck = defineModel()
-const decks = ref()
 
 onMounted(async () => {
   card.value = await service.getOneCard(props.id);
-  decks.value = await deckService.getAllDecks()
 
-  console.log(localStorage.getCardGetByBooster(props.id))
   if(localStorage.getCardGetByBooster(props.id) !== null){
     isObtain.value = true
   }
 });
-
-function addCardToDeck(event){
-  const deckService = new DeckService()
-  deckService.addCard(selectedDeck.value, props.id)
-}
 
 </script>
 
@@ -43,16 +32,7 @@ function addCardToDeck(event){
     <img :src="`${card.image}/low.png`">
 
     <div v-if="isObtain">
-
-      <form @submit.prevent="addCardToDeck">
-        <select name="deckName" v-model="selectedDeck">
-          <option v-for="deck in decks" :key="deck" :value="deck.id">
-            {{ deck.name }}
-          </option>
-        </select>
-        <input type="submit" value="Add to Deck" />
-      </form>
-
+      <AddCardToDeck :id="props.id"/>
     </div>
 
   </div>

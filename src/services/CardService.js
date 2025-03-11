@@ -9,12 +9,16 @@ export default class CardService {
     }
 
     async getAllCards(){
-        if(localStorage.length > 0) return this.serviceLocalStorage.getCardsInStorage()
+        if(localStorage.length > 100){
+            console.log("Récup des cartes via localstorage")
+            return await this.serviceLocalStorage.getCardsInStorage()
+        }
         const cards = await this.service.getAll('https://api.tcgdex.net/v2/fr/cards', 'GET')
         cards.forEach(card => {
             this.serviceLocalStorage.addCardInStorage(card)
         })
 
+        console.log("Récup des cartes via API")
         return cards
     }
 

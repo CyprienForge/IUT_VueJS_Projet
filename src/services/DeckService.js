@@ -8,31 +8,28 @@ export default class DeckService {
     }
 
     async getAllDecks() {
-        const decks = await this.service.getAll('https://67b8eac151192bd378dc35a6.mockapi.io/decks', 'GET')
+        const decks = await this.service.getAll('https://67a87ca5203008941f6a09af.mockapi.io/api/foot/deck', 'GET')
         console.log("Récupération des decks via l'API !", decks)
         return decks
     }
 
     async getOneDeck(id){
-        const url = 'https://67b8eac151192bd378dc35a6.mockapi.io/decks/' + id
+        const url = 'https://67a87ca5203008941f6a09af.mockapi.io/api/foot/deck/' + id
         const deck = await this.service.getOne(url, 'GET')
         return deck
     }
 
     async createOneDeck(newDeck) {
-        const deck = await this.service.createOne('https://67b8eac151192bd378dc35a6.mockapi.io/decks', newDeck)
+        const deck = await this.service.createOne('https://67a87ca5203008941f6a09af.mockapi.io/api/foot/deck', newDeck)
         console.log("création d'un deck !", deck)
         return deck
     }
 
     async addCard(deckId, cardId){
-        const cardService = new CardService()
-
         const deck = await this.getOneDeck(deckId)
-        const card = await cardService.getOneCard(cardId)
-        deck.cards.push(card)
+        deck.cards.push(cardId)
 
-        await this.service.update('https://67b8eac151192bd378dc35a6.mockapi.io/decks/' + deckId, deck)
+        await this.service.update('https://67a87ca5203008941f6a09af.mockapi.io/api/foot/deck/' + deckId, deck)
     }
 
 }

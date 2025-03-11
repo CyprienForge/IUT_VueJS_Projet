@@ -12,7 +12,7 @@ export default class LocalStorageService{
         localStorage.setItem('booster-' + card.id, JSON.stringify(card))
     }
 
-    getCardsInStorage(){
+    async getCardsInStorage(){
         const cards = []
         for(let key in localStorage) {
             if (!localStorage.hasOwnProperty(key)) {
@@ -21,7 +21,7 @@ export default class LocalStorageService{
             const item = JSON.parse(localStorage.getItem(key));
             cards.push(item)
 
-            if(cards.length >= 3000){
+            if(cards.length >= 11000){
                 return cards
             }
         }

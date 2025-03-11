@@ -1,8 +1,9 @@
 <script setup>
 
-const props = defineProps({
-  allCards: Array,
-})
+import LocalStorageService from "@/services/LocalStorageService.js";
+
+const localStorageService = new LocalStorageService()
+const allCards = localStorageService.getCardsInStorage()
 
 </script>
 
@@ -23,5 +24,9 @@ const props = defineProps({
 </template>
 
 <style scoped>
+
+ul{
+  list-style-type: none;
+}
 
 </style>

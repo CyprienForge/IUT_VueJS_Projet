@@ -30,7 +30,6 @@ onMounted(async () => {
 });
 
 function addCardToDeck(event){
-  console.log("Deck : " + selectedDeck.value)
   const deckService = new DeckService()
   deckService.addCard(selectedDeck.value, props.id)
 }

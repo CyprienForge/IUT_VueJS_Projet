@@ -14,11 +14,9 @@ const deck = ref()
 
 onMounted(async() => {
   deck.value = await deckService.getOneDeck(props.id)
+  console.log("Cartes du deck courant : ")
+  console.log(deck.value.cards)
 })
-
-function addCard(event){
-
-}
 
 </script>
 
@@ -31,7 +29,7 @@ function addCard(event){
 
     <ul v-for="card in deck.cards">
       <li>
-        <PokemonDetails :id="card" />
+        <PokemonDetails :id="card.id" />
       </li>
     </ul>
 

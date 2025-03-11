@@ -32,8 +32,6 @@ export default class DeckService {
         const card = await cardService.getOneCard(cardId)
         deck.cards.push(card)
 
-        console.log(deck.cards)
-
         await this.service.update('https://67b8eac151192bd378dc35a6.mockapi.io/decks/' + deckId, deck)
     }
 

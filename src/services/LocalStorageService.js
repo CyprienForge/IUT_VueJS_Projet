@@ -21,13 +21,11 @@ export default class LocalStorageService{
             const item = JSON.parse(localStorage.getItem(key));
             cards.push(item)
 
-            if(cards.length >= 1000){
-                console.log("Local Storage récupéré !")
+            if(cards.length >= 3000){
                 return cards
             }
         }
 
-        console.log("Local Storage récupéré !")
         return cards
     }
 
@@ -45,12 +43,10 @@ export default class LocalStorageService{
             cards.push(item)
 
             if(cards.length >= 1000){
-                console.log("Local Storage récupéré !")
                 return cards
             }
         }
 
-        console.log("Local Storage récupéré !")
         return cards
     }
 

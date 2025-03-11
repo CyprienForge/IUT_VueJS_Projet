@@ -9,6 +9,7 @@ const boosterService = new BoosterService()
 const cardService = new CardService()
 const localStorageService = new LocalStorageService()
 const boosters = ref()
+const nameCardObtain = ref()
 
 onMounted(async() => {
   boosters.value = await boosterService.getAllBoosters()
@@ -23,7 +24,7 @@ async function storage(idBooster) {
   const cardId = booster.cards[idCard]
   const card = await cardService.getOneCard(cardId)
   localStorageService.addCardGetByBooster(card)
-  console.log("Booster ouvert ====> " + card)
+  nameCardObtain.value = card.name
 }
 
 </script>
@@ -32,6 +33,10 @@ async function storage(idBooster) {
   <h1>
     Open a Booster
   </h1>
+
+  <h3 v-if="nameCardObtain">
+    Féliciations vous avez obtenu : <span>{{ nameCardObtain }}</span> !
+  </h3>
 
   <div v-if="boosters">
     <ul v-for="booster in boosters" :key="booster.id">
@@ -44,5 +49,9 @@ async function storage(idBooster) {
 </template>
 
 <style scoped>
+
+span{
+  font-weight: bolder;
+}
 
 </style>

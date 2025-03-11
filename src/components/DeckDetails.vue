@@ -16,6 +16,10 @@ onMounted(async() => {
   deck.value = await deckService.getOneDeck(props.id)
 })
 
+function addCard(event){
+
+}
+
 </script>
 
 <template>

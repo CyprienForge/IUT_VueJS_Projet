@@ -35,9 +35,20 @@ export default class ApiService {
         })
         const deck = response.json()
 
-        console.log("Deck crÃ©e !")
+        console.log("Deck crée !")
 
         return deck
+    }
+
+    async update(url, data){
+        const response = await fetch(url, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        })
+        const deck = response.json()
     }
 
 }

@@ -23,7 +23,7 @@ onMounted(async() => {
     All cards get by boosters :
   </h3>
 
-  <div v-if="cardsGetByBooster">
+  <div style="margin-top: 8%" v-if="cardsGetByBooster">
     <ul v-for="card in cardsGetByBooster" :key="card.id">
       <PokemonDetails :id="card.id"/>
     </ul>

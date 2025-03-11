@@ -4,6 +4,10 @@ export default class LocalStorageService{
         localStorage.setItem(card.id, JSON.stringify(card))
     }
 
+    getCardGetByBooster(id){
+        return localStorage.getItem('booster-' + id)
+    }
+
     addCardGetByBooster(card){
         localStorage.setItem('booster-' + card.id, JSON.stringify(card))
     }

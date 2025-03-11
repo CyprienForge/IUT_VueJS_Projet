@@ -1,4 +1,5 @@
 import ApiService from "@/services/ApiService.js";
+import CardService from "@/services/CardService.js";
 
 export default class DeckService {
 
@@ -22,6 +23,18 @@ export default class DeckService {
         const deck = await this.service.createOne('https://67b8eac151192bd378dc35a6.mockapi.io/decks', newDeck)
         console.log("création d'un deck !", deck)
         return deck
+    }
+
+    async addCard(deckId, cardId){
+        const cardService = new CardService()
+
+        const deck = await this.getOneDeck(deckId)
+        const card = await cardService.getOneCard(cardId)
+        deck.cards.push(card)
+
+        console.log(deck.cards)
+
+        await this.service.update('https://67b8eac151192bd378dc35a6.mockapi.io/decks/' + deckId, deck)
     }
 
 }

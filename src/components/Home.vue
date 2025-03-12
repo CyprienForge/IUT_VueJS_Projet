@@ -2,14 +2,13 @@
 
 import {onMounted, ref} from "vue";
 import LocalStorageService from "@/services/LocalStorageService.js";
-import PokemonDetails from "@/components/PokemonDetails.vue";
+import PokemonDetails from "@/components/collections/PokemonDetails.vue";
 
 const cardsGetByBooster = ref()
 const localStorageService = new LocalStorageService()
 
 onMounted(async() => {
   cardsGetByBooster.value = localStorageService.getCardsGetByBooster()
-  console.log("Card obtenu par booster " + cardsGetByBooster.value)
 })
 
 </script>

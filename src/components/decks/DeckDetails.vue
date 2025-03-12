@@ -2,7 +2,7 @@
 
 import DeckService from "@/services/DeckService.js";
 import {onMounted, ref} from "vue";
-import PokemonDetails from "@/components/PokemonDetails.vue";
+import PokemonDetails from "@/components/collections/PokemonDetails.vue";
 
 const props = defineProps({
   id: String,

@@ -1,11 +1,24 @@
 export default class LocalStorageService{
 
+
     addCardInStorage(card){
         localStorage.setItem(card.id, JSON.stringify(card))
     }
 
     getCardGetByBooster(id){
         return localStorage.getItem('booster-' + id)
+    }
+
+    memorizeNumberPagination(number){
+        localStorage.setItem('paginator', number)
+    }
+
+    getNumberPagination(number){
+        if(localStorage.getItem('paginator') == null){
+            console.log("Paginator a 10 par défaut")
+            this.memorizeNumberPagination(10)
+        }
+        return localStorage.getItem('paginator')
     }
 
     addCardGetByBooster(card){
@@ -21,7 +34,7 @@ export default class LocalStorageService{
             const item = JSON.parse(localStorage.getItem(key));
             cards.push(item)
 
-            if(cards.length >= 11000){
+            if(cards.length >= 5000){
                 return cards
             }
         }

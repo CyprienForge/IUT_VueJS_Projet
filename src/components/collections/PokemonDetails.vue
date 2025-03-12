@@ -4,7 +4,7 @@ import CardService from "@/services/CardService.js";
 import {onMounted, ref} from "vue";
 import LocalStorageService from "@/services/LocalStorageService.js";
 import DeckService from "@/services/DeckService.js";
-import AddCardToDeck from "@/components/AddCardToDeck.vue";
+import AddCardToDeck from "@/components/decks/AddCardToDeck.vue";
 
 const props = defineProps({
   id: String,

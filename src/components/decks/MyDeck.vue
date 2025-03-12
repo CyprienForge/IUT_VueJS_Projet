@@ -2,7 +2,7 @@
 
 import DeckService from "@/services/DeckService.js";
 import {onMounted, ref} from "vue";
-import AddDeck from "@/components/AddDeck.vue";
+import AddDeck from "@/components/decks/AddDeck.vue";
 
 const deckService = new DeckService();
 const decks = ref()

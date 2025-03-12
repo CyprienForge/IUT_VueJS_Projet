@@ -5,11 +5,11 @@ import App from './App.vue'
 
 import { createMemoryHistory, createRouter } from 'vue-router'
 import Home from "@/components/Home.vue";
-import AllCards from "@/components/AllCards.vue";
-import MyDeck from "@/components/MyDeck.vue";
+import AllCards from "@/components/collections/AllCards.vue";
+import MyDeck from "@/components/decks/MyDeck.vue";
 import OpenBooster from "@/components/OpenBooster.vue";
-import PokemonDetails from "@/components/PokemonDetails.vue";
-import DeckDetails from "@/components/DeckDetails.vue";
+import PokemonDetails from "@/components/collections/PokemonDetails.vue";
+import DeckDetails from "@/components/decks/DeckDetails.vue";
 
 const routes = [
     { path: '/', component: Home },

@@ -8,6 +8,13 @@ export default class CardService {
         this.serviceLocalStorage = new LocalStorageService()
     }
 
+    async getAllCardsByNumber(numberPage, numberPokemons){
+        const cards = await this.service.getAll(`https://api.tcgdex.net/v2/fr/cards?pagination:page=${numberPage}&pagination:itemsPerPage=${numberPokemons}`, 'GET')
+
+        console.log("Récup des cartes via API")
+        return cards
+    }
+
     async getAllCards(){
         if(localStorage.length > 100){
             console.log("Récup des cartes via localstorage")

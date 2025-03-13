@@ -46,15 +46,16 @@ onMounted(async () => {
   flex-direction: column;
   border: 4px solid white;
   border-radius: 2rem;
-  width: 70%;
+  width: 12rem;
   margin-bottom: 4%;
-  padding: 2%;
+  height: 22rem;
+  padding: 2.5rem;
 }
 
 .cardPokemon img{
   display: block;
   margin: auto;
-  width: 70%;
+  width: 10rem;
 }
 
 </style>

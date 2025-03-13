@@ -26,8 +26,8 @@ onMounted(async() => {
       {{ deck.name }}
     </h2>
 
-    <ul v-for="card in deck.cards">
-      <li>
+    <ul>
+      <li v-for="card in deck.cards">
         <PokemonDetails :id="card" />
       </li>
     </ul>
@@ -40,4 +40,19 @@ onMounted(async() => {
 h2{
   text-align: center;
 }
+
+ul{
+  margin-top: 4%;
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  flex-direction: row;
+  width: 100%;
+}
+
+li{
+  width: 20%;
+}
+
 </style>

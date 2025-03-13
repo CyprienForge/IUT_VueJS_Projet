@@ -27,9 +27,24 @@ export default class DeckService {
 
     async addCard(deckId, cardId){
         const deck = await this.getOneDeck(deckId)
+        let isPresent = false
+
+        console.log(deck.cards[0])
+
+        deck.cards.forEach(card => {
+            if(card === cardId) isPresent = true
+        })
+
+        if(isPresent == true){
+            console.log("Carte déjà présente dans le deck !")
+            return false
+        }
+
         deck.cards.push(cardId)
 
         await this.service.update('https://67a87ca5203008941f6a09af.mockapi.io/api/foot/deck/' + deckId, deck)
+
+        return true
     }
 
 }

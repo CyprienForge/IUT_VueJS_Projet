@@ -9,7 +9,8 @@ const services = new DeckService()
 
 async function submitForm(event){
 
-  validNameDeck()
+  const isValid = validNameDeck()
+  if(!isValid) return
 
   const newDeck = {
     name: nameDeck.value,
@@ -22,6 +23,11 @@ async function submitForm(event){
 
 function validNameDeck(){
   nameError.value = !nameDeck.value
+
+  if(nameDeck.value === undefined || nameDeck.value === ''){
+    return false;
+  }
+  return true;
 }
 
 </script>
@@ -30,12 +36,22 @@ function validNameDeck(){
 
   <form @submit.prevent="submitForm">
     <input type="text" v-model="nameDeck" @blur="validNameDeck" placeholder="name" :class="{error: nameError}" >
-    <input type="submit" :disabled="nameError" value="Add" />
+    <input type="submit" value="Add" />
   </form>
 
 </template>
 
 <style scoped>
+
+form{
+  margin-top: 2%;
+  display: flex;
+  justify-content: center;
+}
+
+form select{
+  width: 5%;
+}
 
 .error {
   border: 2px solid red;

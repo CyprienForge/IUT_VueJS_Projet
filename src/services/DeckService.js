@@ -43,6 +43,8 @@ export default class DeckService {
         deck.cards.push(cardId)
 
         await this.service.update('https://67a87ca5203008941f6a09af.mockapi.io/api/foot/deck/' + deckId, deck)
+
+        return true
     }
 
 }

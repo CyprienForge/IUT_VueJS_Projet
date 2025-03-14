@@ -2,9 +2,9 @@
 
 import {onMounted, ref} from "vue";
 import LocalStorageService from "@/services/LocalStorageService.js";
-import PokemonDetails from "@/components/collections/PokemonDetails.vue";
+import PokemonDisplay from "@/components/collections/PokemonDisplay.vue";
 
-const cardsGetByBooster = ref()
+const cardsGetByBooster = ref([])
 const localStorageService = new LocalStorageService()
 
 onMounted(async() => {
@@ -23,19 +23,32 @@ onMounted(async() => {
   </h3>
 
   <div id="main">
-    <div  v-for="card in cardsGetByBooster" :key="card.id" class="box" >
-      <PokemonDetails :id="card.id"/>
+    <div id="displayCard" v-if="cardsGetByBooster.length > 0">
+      <div v-for="card in cardsGetByBooster" :key="card.id" class="box">
+        <PokemonDisplay :id="card.id"/>
+      </div>
+    </div>
+    <div id="errorBlock" v-else>
+      <p>
+        Vous n'avez obtenu aucune carte pour le moment ! Allez ouvrir des boosters !
+      </p>
     </div>
   </div>
 
 </template>
 
 <style scoped>
-#main {
+
+#errorBlock {
+  width: 100%;
+  text-align: center;
+}
+
+#displayCard {
   display: flex;
-  flex-wrap: wrap;  /* Permet de revenir Ã  la ligne */
-  justify-content: space-between;  /* Espacement entre les cartes */
-  gap: 20px;  /* Espacement entre les cartes */
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
   width: 100%;
   height: 76%;
 }
@@ -46,38 +59,35 @@ h3{
 }
 
 .box {
-  width: calc(20% - 20px); /* 5 cartes par ligne, moins l'espacement */
+  width: calc(20% - 20px);
   height: 500px;
   display: flex;
   justify-content: center;
   align-items: center;
-  box-sizing: border-box;  /* Assure que le padding ne modifie pas la largeur */
+  box-sizing: border-box;
 }
 
-
-
-/* Responsive : ajuster pour les petits Ã©crans */
 @media (max-width: 1200px) {
   .box {
-    width: calc(25% - 20px); /* 4 cartes par ligne pour les Ã©crans plus petits */
+    width: calc(25% - 20px);
   }
 }
 
 @media (max-width: 900px) {
   .box {
-    width: calc(33.33% - 20px); /* 3 cartes par ligne pour les Ã©crans encore plus petits */
+    width: calc(33.33% - 20px);
   }
 }
 
 @media (max-width: 600px) {
   .box {
-    width: calc(50% - 20px); /* 2 cartes par ligne pour les petits Ã©crans */
+    width: calc(50% - 20px);
   }
 }
 
 @media (max-width: 400px) {
   .box {
-    width: 100%; /* 1 carte par ligne pour les trÃ¨s petits Ã©crans */
+    width: 100%;
   }
 }
 </style>

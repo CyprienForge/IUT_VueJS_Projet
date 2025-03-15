@@ -22,6 +22,12 @@ export default class ApiService {
         return card
     }
 
+    async delete(url){
+        const response = await fetch(url, {
+            method: 'DELETE',
+        })
+    }
+
     async createOne(url, data){
 
         const response = await fetch(url, {

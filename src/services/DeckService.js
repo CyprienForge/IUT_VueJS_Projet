@@ -47,4 +47,8 @@ export default class DeckService {
         return true
     }
 
+    async deleteOneCard(id){
+        await this.service.delete('https://67a87ca5203008941f6a09af.mockapi.io/api/foot/deck/' + id)
+    }
+
 }

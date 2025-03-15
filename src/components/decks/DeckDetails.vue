@@ -17,14 +17,26 @@ onMounted(async() => {
   console.log(deck.value.cards)
 })
 
+async function deleteDeck(event) {
+  await deckService.deleteOneCard(props.id)
+  location.reload();
+}
+
 </script>
 
 <template>
 
   <div v-if="deck">
-    <h2>
-      {{ deck.name }}
-    </h2>
+
+    <div class="presentation">
+      <div>
+
+      </div>
+      <h2>
+        {{ deck.name }}
+      </h2>
+      <img @click="deleteDeck" src="../../../public/poubelle.png" alt="Icon to delete deck" />
+    </div>
 
     <ul>
       <li v-for="card in deck.cards">
@@ -37,6 +49,18 @@ onMounted(async() => {
 </template>
 
 <style scoped>
+
+.presentation{
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.presentation img{
+  width: 6rem;
+  cursor: pointer;
+}
+
 h2{
   text-align: center;
 }

@@ -8,8 +8,9 @@ import Home from "@/components/Home.vue";
 import AllCards from "@/components/collections/AllCards.vue";
 import MyDeck from "@/components/decks/MyDeck.vue";
 import OpenBooster from "@/components/OpenBooster.vue";
-import PokemonDetails from "@/components/collections/PokemonDetails.vue";
+import PokemonDisplay from "@/components/collections/PokemonDisplay.vue";
 import DeckDetails from "@/components/decks/DeckDetails.vue";
+import PokemonDetails from "@/components/collections/PokemonDetails.vue";
 
 const routes = [
     { path: '/', component: Home },

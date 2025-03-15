@@ -2,7 +2,7 @@
 
 import DeckService from "@/services/DeckService.js";
 import {onMounted, ref} from "vue";
-import PokemonDetails from "@/components/collections/PokemonDetails.vue";
+import PokemonDisplay from "@/components/collections/PokemonDisplay.vue";
 
 const props = defineProps({
   id: String,
@@ -28,7 +28,7 @@ onMounted(async() => {
 
     <ul>
       <li v-for="card in deck.cards">
-        <PokemonDetails :id="card" />
+        <PokemonDisplay :id="card" />
       </li>
     </ul>
 

@@ -3,7 +3,7 @@
 import LocalStorageService from "@/services/LocalStorageService.js";
 import CardService from "@/services/CardService.js";
 import {onMounted, ref} from "vue";
-import PokemonDetails from "@/components/collections/PokemonDetails.vue";
+import PokemonDisplay from "@/components/collections/PokemonDisplay.vue";
 import FormChangePagination from "@/components/FormChangePagination.vue";
 import PaginatorNavigation from "@/components/collections/PaginatorNavigation.vue";
 
@@ -61,7 +61,7 @@ async function recupNewNumber(number){
 
   <div id="cards">
     <div v-for="card in allCards" :key="card.id" class="card" >
-      <PokemonDetails :id="card.id"/>
+      <PokemonDisplay :id="card.id"/>
     </div>
   </div>
 

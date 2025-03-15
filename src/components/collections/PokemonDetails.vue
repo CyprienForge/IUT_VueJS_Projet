@@ -1,61 +1,75 @@
-<script setup async>
+<script setup>
 
 import CardService from "@/services/CardService.js";
 import {onMounted, ref} from "vue";
-import LocalStorageService from "@/services/LocalStorageService.js";
-import DeckService from "@/services/DeckService.js";
-import AddCardToDeck from "@/components/decks/AddCardToDeck.vue";
 
 const props = defineProps({
   id: String,
 })
 
-const service = new CardService()
-const localStorage = new LocalStorageService()
-const card = ref()
-const isObtain = ref(false)
+const pokemon = ref([])
 
-onMounted(async () => {
-  card.value = await service.getOneCard(props.id);
+onMounted(async() => {
+  const cardService = new CardService()
+  pokemon.value = await cardService.getOneCard(props.id)
 
-  if(localStorage.getCardGetByBooster(props.id) !== null){
-    isObtain.value = true
-  }
-});
+  console.log(pokemon.value)
+})
 
 </script>
 
 <template>
-  <div class="cardPokemon" v-if="card">
-    <h2>{{ card.category }} - {{ card.name }}</h2>
 
-    <img :src="`${card.image}/low.png`">
+  <h2>
+    {{ pokemon.name }}
+  </h2>
 
-    <div v-if="isObtain">
-      <AddCardToDeck :id="props.id"/>
-    </div>
+  <div class="cardPokemonDesc">
+    <img :src="`${pokemon.image}/low.png`">
 
+    <ul>
+      <li>
+        HP : {{ pokemon.hp }}
+      </li>
+      <li>
+        Rareté : {{ pokemon.rarity }}
+      </li>
+      <p>Types : </p>
+      <li v-for="type in pokemon.types" :key="type">
+        {{ type }}
+      </li>
+      <p>Attaques : </p>
+      <li v-for="attack in pokemon.attacks">
+        {{ attack.name }} - {{ attack.damage }}HP
+      </li>
+    </ul>
   </div>
+
 </template>
 
 <style scoped>
 
-.cardPokemon{
+.cardPokemonDesc {
   display: flex;
-  text-align: center;
-  flex-direction: column;
-  border: 4px solid white;
-  border-radius: 2rem;
-  width: 12rem;
-  margin-bottom: 4%;
-  height: 22rem;
-  padding: 2.5rem;
+  align-items: center;
 }
 
-.cardPokemon img{
-  display: block;
-  margin: auto;
-  width: 10rem;
+h2{
+  text-align: center;
+  font-weight: bolder;
+  font-size: 3rem;
+}
+
+img{
+  float: left;
+  margin-left: 4rem;
+}
+
+ul{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-content: center;
 }
 
 </style>

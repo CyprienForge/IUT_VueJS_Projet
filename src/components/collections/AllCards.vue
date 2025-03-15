@@ -18,28 +18,28 @@ onMounted(async() => {
   numPage.value = 1
   numberPokemons.value = localStorageService.getNumberPagination()
   allCards.value = await cardService.getAllCardsByNumber(numPage.value, numberPokemons.value)
-  allCards.value = await allCards.value.filter(card => card.image)
+  allCards.value = allCards.value.filter(card => card.image)
   console.log(allCards.value)
 })
 
 async function incrementPagination(event){
   numPage.value += 1
   allCards.value = await cardService.getAllCardsByNumber(numPage.value, numberPokemons.value)
-  allCards.value = await allCards.value.filter(card => card.image)
+  allCards.value = allCards.value.filter(card => card.image)
 }
 
 async function decrementPagination(event){
   if(numPage.value === 1) return
   numPage.value -= 1
   allCards.value = await cardService.getAllCardsByNumber(numPage.value, numberPokemons.value)
-  allCards.value = await allCards.value.filter(card => card.image)
+  allCards.value = allCards.value.filter(card => card.image)
 }
 
 async function recupNewNumber(number){
   numberPokemons.value = number
 
   allCards.value = await cardService.getAllCardsByNumber(numPage.value, numberPokemons.value)
-  allCards.value = await allCards.value.filter(card => card.image)
+  allCards.value =  allCards.value.filter(card => card.image)
 
   localStorageService.memorizeNumberPagination(numberPokemons.value)
 }
@@ -50,6 +50,7 @@ async function recupNewNumber(number){
   <h1>
     All Cards
   </h1>
+
 
 
   <FormChangePagination @submitNumberPokemons="recupNewNumber"/>

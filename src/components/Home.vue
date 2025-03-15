@@ -9,6 +9,8 @@ const localStorageService = new LocalStorageService()
 
 onMounted(async() => {
   cardsGetByBooster.value = localStorageService.getCardsGetByBooster()
+
+  cardsGetByBooster.value =  cardsGetByBooster.value.filter(card => card.image)
 })
 
 </script>

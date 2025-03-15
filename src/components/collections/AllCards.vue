@@ -51,9 +51,6 @@ async function recupNewNumber(number){
     All Cards
   </h1>
 
-  <h5 style="text-align: center">
-    Nombre de cartes par page : {{ numberPokemons }}
-  </h5>
 
   <FormChangePagination @submitNumberPokemons="recupNewNumber"/>
 

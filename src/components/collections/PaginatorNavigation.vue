@@ -15,52 +15,65 @@ async function decrementPagination(event){
 }
 
 </script>
-
 <template>
   <div id="navigation">
-    <button @click="decrementPagination">
-      <img id="left" src="../../../public/fleche-vers-la-gauche.png" alt="Arrow to right"/>
+    <button @click="decrementPagination" class="nav-button">
+      <img src="../../../public/fleche-vers-la-gauche.png" alt="Arrow to left" />
     </button>
-    <h4>
-      {{ props.numberPage }}
-    </h4>
-    <button @click="incrementPagination">
-      <img id="right" src="../../../public/fleche-vers-la-droite.png" alt="Arrow to right"/>
+    <h4>{{ props.numberPage }}</h4>
+    <button @click="incrementPagination" class="nav-button">
+      <img src="../../../public/fleche-vers-la-droite.png" alt="Arrow to right" />
     </button>
   </div>
 </template>
 
 <style scoped>
-
-h4{
-  font-size: 2rem;
-}
-
 #navigation {
   display: flex;
-  margin-left: 40%;
-  margin-bottom: 1%;
-  width: 20%;
-  bottom: 0;
+  align-items: center;
+  justify-content: space-between;
   position: fixed;
-  background-color: rgb(250, 68, 68);
-  border-radius: 15px;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #f8f8f8; /* Couleur de fond claire */
+  border-radius: 25px; /* Coins arrondis pour une forme douce */
+  padding: 8px 20px;
+  width: 250px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Ombre discrète */
 }
 
-#navigation button{
+#navigation h4 {
+  font-size: 1.5rem;
+  color: #333; /* Couleur du texte gris foncé pour une bonne lisibilité */
+  margin: 0;
+}
+
+.nav-button {
+  background: none;
+  border: none;
+  padding: 8px;
   cursor: pointer;
-  background-color: rgb(250, 68, 68);
-  border: 0;
+  border-radius: 50%;
+  transition: transform 0.3s ease, background-color 0.2s ease;
 }
 
-#navigation img {
-  display: block;
-  margin: auto;
-  width: 40%;
-  transition: 0.25s all ease;
+.nav-button:hover {
+  background-color: #f0f0f0; /* Légère teinte lors du survol */
 }
 
-#navigation img:hover {
-  transform: scale(1.05)
+.nav-button img {
+  width: 24px;
+  height: 24px;
+}
+
+.nav-button:hover img {
+  transform: scale(1.2); /* Zoom doux au survol */
+}
+
+#navigation .nav-button:focus {
+  outline: none; /* Retirer le focus box */
 }
 </style>
+
+

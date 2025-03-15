@@ -1,7 +1,7 @@
 <script setup async>
 
 import CardService from "@/services/CardService.js";
-import {onMounted, ref} from "vue";
+import { onMounted, ref } from "vue";
 import LocalStorageService from "@/services/LocalStorageService.js";
 import DeckService from "@/services/DeckService.js";
 import AddCardToDeck from "@/components/decks/AddCardToDeck.vue";
@@ -26,38 +26,54 @@ onMounted(async () => {
 </script>
 
 <template>
-  <RouterLink :to="`/all/${props.id}`">
-    <div class="cardPokemon" v-if="card">
-      <h2>{{ card.category }} - {{ card.name }}</h2>
-
-      <img :src="`${card.image}/low.png`">
-
-      <div v-if="isObtain">
-        <AddCardToDeck :id="props.id"/>
+  <div class="pokemon-container">
+    <!-- Lien vers la page détaillée du Pokémon -->
+    <RouterLink :to="`/all/${props.id}`">
+      <div class="pokemon-card" v-if="card">
+        <img :src="`${card.image}/low.png`" alt="Pokemon Image" class="pokemon-image">
       </div>
+    </RouterLink>
 
+    <!-- Formulaire d'ajout au deck -->
+    <div v-if="isObtain" class="add-to-deck-container">
+      <AddCardToDeck :id="props.id" />
     </div>
-  </RouterLink>
+  </div>
 </template>
 
 <style scoped>
-
-.cardPokemon{
+.pokemon-container {
   display: flex;
-  text-align: center;
-  flex-direction: column;
-  border: 4px solid white;
-  border-radius: 2rem;
-  width: 12rem;
-  margin-bottom: 4%;
-  height: 22rem;
-  padding: 2.5rem;
+  flex-direction: column; /* Assure que l'image et le formulaire sont empilés verticalement */
+  align-items: center; /* Centre les éléments dans le conteneur */
+  width: 100%;
+  margin-bottom: 20px; /* Ajoute un peu d'espace sous chaque carte */
 }
 
-.cardPokemon img{
+.pokemon-card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 200px;
+  height: auto;
+  margin-bottom: 10px; /* Espace entre la carte et le formulaire */
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.pokemon-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.add-to-deck-container {
   display: block;
-  margin: auto;
-  width: 10rem;
+  width: 100%;
+  margin-top: 10px;
+  text-align: center;
 }
-
 </style>
+
+

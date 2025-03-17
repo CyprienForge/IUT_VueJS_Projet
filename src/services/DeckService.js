@@ -47,8 +47,19 @@ export default class DeckService {
         return true
     }
 
-    async deleteOneCard(id){
+    async deleteOneDeck(id){
         await this.service.delete('https://67a87ca5203008941f6a09af.mockapi.io/api/foot/deck/' + id)
+    }
+
+    async deleteOneCard(idCard, idDeck){
+        const deck = await this.service.getOne('https://67a87ca5203008941f6a09af.mockapi.io/api/foot/deck/' + idDeck, 'GET')
+        const cards = deck.cards.filter(item => item !== idCard);
+
+        deck.cards = cards
+
+        console.log(cards)
+
+        await this.service.update('https://67a87ca5203008941f6a09af.mockapi.io/api/foot/deck/' + idDeck, deck)
     }
 
 }

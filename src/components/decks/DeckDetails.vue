@@ -3,6 +3,7 @@
 import DeckService from "@/services/DeckService.js";
 import {onMounted, ref} from "vue";
 import PokemonDisplay from "@/components/collections/PokemonDisplay.vue";
+import {createRouter as router} from "vue-router";
 
 const props = defineProps({
   id: String,
@@ -18,7 +19,14 @@ onMounted(async() => {
 })
 
 async function deleteDeck(event) {
-  await deckService.deleteOneCard(props.id)
+  await deckService.deleteOneDeck(props.id)
+  location.reload();
+}
+
+async function deleteCard(card){
+  console.log("Carte a supp : " + card)
+  await deckService.deleteOneCard(card, props.id)
+
   location.reload();
 }
 
@@ -40,6 +48,7 @@ async function deleteDeck(event) {
 
     <ul>
       <li v-for="card in deck.cards">
+        <img @click="deleteCard(card)" class="deletePokemon" src="../../../public/poubelle.png" alt="Icon to delete cart in deck" />
         <PokemonDisplay :id="card" />
       </li>
     </ul>
@@ -49,6 +58,19 @@ async function deleteDeck(event) {
 </template>
 
 <style scoped>
+
+.deletePokemon {
+  padding: 1rem;
+  width: 2.5rem;
+  cursor: pointer;
+}
+
+li{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
 .presentation{
   margin-top: 1rem;

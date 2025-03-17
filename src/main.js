@@ -3,7 +3,7 @@ import './assets/main.css'
 import { createApp } from 'vue'
 import App from './App.vue'
 
-import { createMemoryHistory, createRouter } from 'vue-router'
+import {createMemoryHistory, createRouter, createWebHistory} from 'vue-router'
 import Home from "@/components/Home.vue";
 import AllCards from "@/components/collections/AllCards.vue";
 import MyDeck from "@/components/decks/MyDeck.vue";
@@ -22,7 +22,7 @@ const routes = [
 ]
 
 const router = createRouter({
-    history: createMemoryHistory(),
+    history: createWebHistory(),
     routes,
 })
 

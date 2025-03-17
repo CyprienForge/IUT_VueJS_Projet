@@ -1,43 +1,42 @@
 <script setup>
-
-import {onMounted, ref} from "vue";
+import { onMounted, ref } from "vue";
 import LocalStorageService from "@/services/LocalStorageService.js";
 import PokemonDisplay from "@/components/collections/PokemonDisplay.vue";
+import SearchBar from "@/components/collections/SearchBar.vue";
 
-const cardsGetByBooster = ref([])
-const localStorageService = new LocalStorageService()
+const cardsGetByBooster = ref([]);
+const filteredCards = ref([]);
+const localStorageService = new LocalStorageService();
 
-onMounted(async() => {
-  cardsGetByBooster.value = localStorageService.getCardsGetByBooster()
+onMounted(async () => {
+  cardsGetByBooster.value = localStorageService.getCardsGetByBooster();
+  cardsGetByBooster.value = cardsGetByBooster.value.filter(card => card.image);
+  filteredCards.value = [...cardsGetByBooster.value];
+});
 
-  cardsGetByBooster.value =  cardsGetByBooster.value.filter(card => card.image)
-})
-
+function recupFilteredCards(allCards) {
+  filteredCards.value = allCards;
+}
 </script>
 
 <template>
-  <h1>
-    Home
-  </h1>
+  <h1>Home</h1>
+  <h3>Collection :</h3>
 
-  <h3>
-    Collection :
-  </h3>
+  <SearchBar @filtered-cards="recupFilteredCards" :pokemons="cardsGetByBooster" />
 
   <div id="main">
-    <div id="displayCard" v-if="cardsGetByBooster.length > 0">
-      <div v-for="card in cardsGetByBooster" :key="card.id" class="box">
-        <PokemonDisplay :id="card.id"/>
+    <div id="displayCard" v-if="filteredCards.length > 0">
+      <div v-for="card in filteredCards" :key="card.id" class="box">
+        <PokemonDisplay :id="card.id" />
       </div>
     </div>
     <div id="errorBlock" v-else>
-      <p>
-        Vous n'avez obtenu aucune carte pour le moment ! Allez ouvrir des boosters !
-      </p>
+      <p>Vous n'avez obtenu aucune carte pour le moment ! Allez ouvrir des boosters !</p>
     </div>
   </div>
-
 </template>
+
 
 <style scoped>
 

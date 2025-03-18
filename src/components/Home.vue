@@ -8,9 +8,10 @@ import SwapButton from "@/components/collections/SwapButton.vue";
 const cardsGetByBooster = ref([]);
 const filteredCards = ref([]);
 const localStorageService = new LocalStorageService();
+const currentSwapCards = ref([])
 
 onMounted(async () => {
-  cardsGetByBooster.value = localStorageService.getCardsGetByBooster();
+  cardsGetByBooster.value = localStorageService.getCardsByBooster();
   cardsGetByBooster.value = cardsGetByBooster.value.filter(card => card.image);
   filteredCards.value = [...cardsGetByBooster.value];
 });
@@ -18,6 +19,22 @@ onMounted(async () => {
 function recupFilteredCards(allCards) {
   filteredCards.value = allCards;
 }
+
+function recupSwap(allCards) {
+  cardsGetByBooster.value = allCards;
+}
+
+function addSwap(card){
+  if(currentSwapCards.value.length === 4){
+    return
+  }
+  currentSwapCards.value.push(card);
+}
+
+function deleteCardOnSwap(card){
+  currentSwapCards.value.splice(currentSwapCards.value.indexOf(card), 1);
+}
+
 </script>
 
 <template>
@@ -25,16 +42,24 @@ function recupFilteredCards(allCards) {
   <h3>Collection :</h3>
 
   <SearchBar @filtered-cards="recupFilteredCards" :pokemons="cardsGetByBooster" />
-  <SwapButton />
+  <SwapButton :cards="currentSwapCards" @swap="recupSwap" @delete-card-on-swap="deleteCardOnSwap"/>
 
   <div id="main">
     <div id="displayCard" v-if="filteredCards.length > 0">
       <div v-for="card in filteredCards" :key="card.id" class="box">
+        <button @click="addSwap(card)">
+          Ajouter au swap
+        </button>
         <PokemonDisplay :id="card.id" />
       </div>
     </div>
     <div id="errorBlock" v-else>
-      <p>Vous n'avez obtenu aucune carte pour le moment ! Allez ouvrir des boosters !</p>
+      <p>
+        Vous n'avez obtenu aucune carte pour le moment ! Allez ouvrir des
+        <RouterLink to="/open">
+          boosters !
+        </RouterLink>
+      </p>
     </div>
   </div>
 </template>

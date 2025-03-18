@@ -20,12 +20,15 @@ onMounted(async() => {
 
 async function deleteDeck(event) {
   await deckService.deleteOneDeck(props.id)
+
+  window.location.href = "/deck"
 }
 
 async function deleteCard(card){
   console.log("Carte a supp : " + card)
   await deckService.deleteOneCard(card, props.id)
 
+  location.reload();
 }
 
 </script>

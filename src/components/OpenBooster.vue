@@ -24,6 +24,7 @@ async function storage(idBooster) {
   const cardId = booster.cards[idCard]
   const card = await cardService.getOneCard(cardId)
   localStorageService.addCardGetByBooster(card)
+
   CardObtain.value = card
 }
 
@@ -40,8 +41,6 @@ async function storage(idBooster) {
 
   </div>
 
-
-
   <div v-if="CardObtain" class="obtained-card">
     <h2>Vous avez obtenu une nouvelle carte !</h2>
     <div class="card-details">
@@ -52,11 +51,6 @@ async function storage(idBooster) {
     </div>
   </div>
 </template>
-
-
-
-
-
 
 <style scoped>
 #booster-list {

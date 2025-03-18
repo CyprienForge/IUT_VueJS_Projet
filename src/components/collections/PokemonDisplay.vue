@@ -14,6 +14,7 @@ const service = new CardService()
 const localStorage = new LocalStorageService()
 const card = ref()
 const isObtain = ref(false)
+const nbOccurences = ref()
 
 onMounted(async () => {
   card.value = await service.getOneCard(props.id);
@@ -21,6 +22,7 @@ onMounted(async () => {
   if(localStorage.getCardGetByBooster(props.id) !== null){
     isObtain.value = true
   }
+  nbOccurences.value = localStorage.getDoublon(props.id)
 });
 
 </script>
@@ -34,6 +36,9 @@ onMounted(async () => {
       </div>
     </RouterLink>
 
+    <p>
+      Nombre : {{ nbOccurences }}
+    </p>
 
     <div v-if="isObtain" class="add-to-deck-container">
       <AddCardToDeck :id="props.id" />

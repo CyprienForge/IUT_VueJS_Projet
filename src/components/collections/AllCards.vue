@@ -39,7 +39,7 @@ async function recupNewNumber(number){
   numberPokemons.value = number
 
   allCards.value = await cardService.getAllCardsByNumber(numPage.value, numberPokemons.value)
-  allCards.value =  allCards.value.filter(card => card.image)
+  allCards.value = allCards.value.filter(card => card.image)
 
   localStorageService.memorizeNumberPagination(numberPokemons.value)
 }

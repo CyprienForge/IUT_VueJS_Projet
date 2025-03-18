@@ -19,4 +19,8 @@ export default class CardService {
       return await this.service.getOne(`https://api.tcgdex.net/v2/fr/cards/${cardId}`, 'GET')
     }
 
+    async getAllCards(){
+        return await this.service.getAll('https://api.tcgdex.net/v2/fr/cards/', 'GET')
+    }
+
 }

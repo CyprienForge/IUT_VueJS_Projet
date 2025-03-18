@@ -41,7 +41,7 @@ async function storage(idBooster) {
   </div>
 
 
-  <!-- Carte stylisÃ©e qui s'affiche aprÃ¨s l'ouverture d'un booster -->
+
   <div v-if="CardObtain" class="obtained-card">
     <h2>Vous avez obtenu une nouvelle carte !</h2>
     <div class="card-details">
@@ -62,27 +62,27 @@ async function storage(idBooster) {
 #booster-list {
   display: flex;
   justify-content: space-evenly;
-  align-items: center; /* Centrer les images verticalement */
+  align-items: center;
   width: 100%;
-  height: 50%; /* Hauteur de la section ajustÃ©e pour mieux centrer les images */
+  height: 50%;
   margin: 0;
   padding: 0;
 }
 
 .booster-image {
 
-  height: 400px; /* Hauteur des images */
+  height: 400px;
   cursor: pointer;
-  border-radius: 8px; /* Bordures arrondies pour les images */
-  transition: transform 0.3s ease; /* Transition fluide pour l'effet hover */
+  border-radius: 8px;
+  transition: transform 0.3s ease;
 }
 
 .booster-image:hover {
-  transform: scale(1.1); /* Agrandir l'image lÃ©gÃ¨rement au survol */
+  transform: scale(1.1);
 }
 
 
-/* Style pour la carte obtenue */
+
 .obtained-card {
   text-align: center;
   margin-top: 30px;
@@ -119,10 +119,6 @@ async function storage(idBooster) {
   margin-bottom: 10px;
 }
 
-.card-description {
-  font-size: 1rem;
-  color: #555;
-}
 
 
 .card-message span {

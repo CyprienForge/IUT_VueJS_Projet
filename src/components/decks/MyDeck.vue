@@ -1,31 +1,53 @@
 <script setup>
 import DeckService from "@/services/DeckService.js";
-import {onMounted, ref, watch} from "vue";
+import { onMounted, ref, watch } from "vue";
 import AddDeck from "@/components/decks/AddDeck.vue";
+import LocalStorageService from "@/services/LocalStorageService.js";
 
 const deckService = new DeckService();
+const localStorageService = new LocalStorageService();
+const cards = ref([]);
 const decks = ref([]);
 const loading = ref(true);
+const result = ref(true);
+const deckToAddCard = ref(null);
+const selectedCard = ref(null);  
+const selectedDeck = ref(null);
 
 onMounted(async () => {
   decks.value = await deckService.getAllDecks();
+  cards.value = localStorageService.getCardsGetByBooster();
   loading.value = false;
 });
 
-function recupNewDeck(newDeck){
+function recupNewDeck(newDeck) {
   decks.value.push(newDeck);
 }
 
-watch(decks, (newDecks) => {
-  console.log("Deck a évolué !")
-});
+async function addCardToDeck() {
+  result.value = await deckService.addCard(selectedDeck.value, selectedCard.value);
+  if (result.value) {
+    const deck = decks.value.find(deck => deck.id === selectedDeck.value);
+    deck.cards.push(selectedCard.value);
+  }
+}
 
+function toggleAddCardForm(deckId) {
+  if (deckToAddCard.value === deckId) {
+    deckToAddCard.value = null;
+  } else {
+    deckToAddCard.value = deckId;
+  }
+}
+
+watch(decks, (newDecks) => {
+  console.log("Deck a évolué !");
+});
 </script>
 
 <template>
   <h1>My Decks</h1>
   <div class="deck-container">
-
     <div v-if="loading" class="loading-message">
       <p>Loading your decks...</p>
     </div>
@@ -35,6 +57,20 @@ watch(decks, (newDecks) => {
         <RouterLink :to="`/deck/${deck.id}`" class="deck-link">
           <p class="deck-name">{{ deck.name }}</p>
         </RouterLink>
+
+
+        <div class="add-card-button" @click="toggleAddCardForm(deck.id)">
+          <span>+</span>
+        </div>
+
+        <div v-if="deckToAddCard === deck.id" class="add-card-form">
+          <select v-model="selectedCard" class="deck-select">
+            <option v-for="card in cards" :key="card.id" :value="card.id">
+              {{ card.name }}
+            </option>
+          </select>
+          <button @click="addCardToDeck" class="submit-btn">Add Card</button>
+        </div>
       </li>
     </ul>
 
@@ -43,7 +79,6 @@ watch(decks, (newDecks) => {
 </template>
 
 <style scoped>
-
 .deck-container {
   background-color: #f4f4f9;
   padding: 3% 10%;
@@ -54,7 +89,6 @@ watch(decks, (newDecks) => {
   box-sizing: border-box;
 }
 
-<<<<<<< HEAD
 .loading-message {
   font-size: 1.2em;
   color: #666;
@@ -83,6 +117,7 @@ watch(decks, (newDecks) => {
   cursor: pointer;
   overflow: hidden;
   text-align: center;
+  position: relative;
 }
 
 .deck-item:hover {
@@ -103,14 +138,57 @@ watch(decks, (newDecks) => {
   margin: 0;
 }
 
-
 .deck-link:hover .deck-name {
   color: #f06;
 }
 
+.add-card-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #4CAF50;
+  color: white;
+  font-size: 24px;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
 
-.deck-item {
-  animation: fadeIn 0.5s ease-out;
+.add-card-button:hover {
+  background-color: #45a049;
+}
+
+.add-card-form {
+  margin-top: 10px;
+  padding: 1rem;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+}
+
+.deck-select {
+  padding: 5px;
+  font-size: 0.85rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+.submit-btn {
+  padding: 5px 10px;
+  font-size: 0.85rem;
+  background-color: #fca5a5;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.submit-btn:hover {
+  background-color: #f87171;
 }
 
 @keyframes fadeIn {

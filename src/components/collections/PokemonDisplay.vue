@@ -30,9 +30,10 @@ onMounted(async () => {
 <template>
   <div class="pokemon-container">
 
-    <RouterLink :to="`/all/${props.id}`">
+    <RouterLink :to="`/all/${props.id}`" class="pokemon-link">
       <div class="pokemon-card" v-if="card">
-        <img :src="`${card.image}/low.png`" alt="Pokemon Image" class="pokemon-image">
+        <p class="pokemon-name">{{ card.name }}</p>
+        <img :src="`${card.image}/low.png`" alt="Pokemon Image" class="pokemon-image"/>
       </div>
     </RouterLink>
 
@@ -60,11 +61,22 @@ onMounted(async () => {
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   padding: 20px;
+  text-align: center;
   width: 200px;
   height: auto;
   margin-bottom: 10px;
   cursor: pointer;
   box-sizing: border-box;
+}
+
+.pokemon-name {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: black;
+}
+.pokemon-link {
+  text-decoration: none;
 }
 
 .pokemon-image {

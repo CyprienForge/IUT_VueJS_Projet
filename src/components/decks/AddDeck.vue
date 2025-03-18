@@ -56,7 +56,7 @@ function validNameDeck() {
 </template>
 
 <style scoped>
-/* Container principal */
+
 .add-deck-container {
   background-color: #ffffff;
   padding: 3rem 2rem;
@@ -68,27 +68,24 @@ function validNameDeck() {
 }
 
 
-/* Formulaire */
+
 .add-deck-form {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
 }
 
-/* Groupes de champs */
+
 .input-group {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 }
 
-/* Étiquettes des champs */
-.input-label {
-  font-size: 1.1em;
-  color: #555;
-}
 
-/* Champs de saisie (input et textarea) */
+
+
+
 .input-field {
   padding: 0.75rem;
   font-size: 1.1em;
@@ -102,7 +99,7 @@ function validNameDeck() {
   border-color: #f06;
 }
 
-/* Message d'erreur */
+
 .input-error {
   border-color: red;
 }
@@ -115,7 +112,7 @@ function validNameDeck() {
   font-weight: bold;
 }
 
-/* Bouton de soumission */
+
 .submit-button {
   padding: 0.8rem;
   font-size: 1.2em;

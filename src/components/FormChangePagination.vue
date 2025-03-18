@@ -66,7 +66,7 @@ async function changeNumberPokemons(event){
 }
 
 .select-input:focus {
-  border-color: #007BFF; /* Couleur de focus */
+  border-color: #007BFF;
 }
 
 .submit-button {

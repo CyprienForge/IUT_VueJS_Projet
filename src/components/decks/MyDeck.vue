@@ -43,6 +43,7 @@ watch(decks, (newDecks) => {
 </template>
 
 <style scoped>
+
 .deck-container {
   background-color: #f4f4f9;
   padding: 3% 10%;
@@ -53,6 +54,7 @@ watch(decks, (newDecks) => {
   box-sizing: border-box;
 }
 
+<<<<<<< HEAD
 .loading-message {
   font-size: 1.2em;
   color: #666;
@@ -101,9 +103,11 @@ watch(decks, (newDecks) => {
   margin: 0;
 }
 
+
 .deck-link:hover .deck-name {
   color: #f06;
 }
+
 
 .deck-item {
   animation: fadeIn 0.5s ease-out;

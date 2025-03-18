@@ -3,6 +3,7 @@ import { onMounted, ref } from "vue";
 import LocalStorageService from "@/services/LocalStorageService.js";
 import PokemonDisplay from "@/components/collections/PokemonDisplay.vue";
 import SearchBar from "@/components/collections/SearchBar.vue";
+import SwapButton from "@/components/collections/SwapButton.vue";
 
 const cardsGetByBooster = ref([]);
 const filteredCards = ref([]);
@@ -24,6 +25,7 @@ function recupFilteredCards(allCards) {
   <h3>Collection :</h3>
 
   <SearchBar @filtered-cards="recupFilteredCards" :pokemons="cardsGetByBooster" />
+  <SwapButton />
 
   <div id="main">
     <div id="displayCard" v-if="filteredCards.length > 0">

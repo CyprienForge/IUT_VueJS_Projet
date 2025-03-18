@@ -1,10 +1,12 @@
 <script setup>
-import { ref } from "vue";
+import {ref, watch} from "vue";
 import DeckService from "@/services/DeckService.js";
 
 const nameDeck = ref('');
 const nameError = ref(false);
 const services = new DeckService();
+
+const emit = defineEmits(['submitNewDeck'])
 
 async function submitForm(event) {
   const isValid = validNameDeck();
@@ -16,8 +18,8 @@ async function submitForm(event) {
   };
 
   await services.createOneDeck(newDeck);
-  // Redirection après ajout d'un deck
-  location.reload();
+  nameDeck.value = "";
+  emit('submitNewDeck', newDeck);
 }
 
 function validNameDeck() {
@@ -28,6 +30,7 @@ function validNameDeck() {
   }
   return true;
 }
+
 </script>
 
 <template>

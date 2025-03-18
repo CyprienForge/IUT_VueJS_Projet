@@ -20,14 +20,12 @@ onMounted(async() => {
 
 async function deleteDeck(event) {
   await deckService.deleteOneDeck(props.id)
-  location.reload();
 }
 
 async function deleteCard(card){
   console.log("Carte a supp : " + card)
   await deckService.deleteOneCard(card, props.id)
 
-  location.reload();
 }
 
 </script>

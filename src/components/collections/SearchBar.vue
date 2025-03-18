@@ -11,7 +11,8 @@ const emit = defineEmits(["filteredCards"]);
 
 const filteredCards = computed(() => {
   return props.pokemons.filter(card =>
-      card.name.toLowerCase().includes(searchQuery.value.toLowerCase())
+      card.name.toLowerCase().includes(searchQuery.value.toLowerCase()) ||
+      card.id.toLowerCase().includes(searchQuery.value.toLowerCase())
   );
 });
 

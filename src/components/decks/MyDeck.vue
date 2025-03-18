@@ -11,12 +11,12 @@ const decks = ref([]);
 const loading = ref(true);
 const result = ref(true);
 const deckToAddCard = ref(null);
-const selectedCard = ref(null);  
+const selectedCard = defineModel()
 const selectedDeck = ref(null);
 
 onMounted(async () => {
   decks.value = await deckService.getAllDecks();
-  cards.value = localStorageService.getCardsGetByBooster();
+  cards.value = localStorageService.getCardsByBooster();
   loading.value = false;
 });
 
@@ -24,12 +24,15 @@ function recupNewDeck(newDeck) {
   decks.value.push(newDeck);
 }
 
-async function addCardToDeck() {
-  result.value = await deckService.addCard(selectedDeck.value, selectedCard.value);
-  if (result.value) {
-    const deck = decks.value.find(deck => deck.id === selectedDeck.value);
-    deck.cards.push(selectedCard.value);
+async function addCardToDeck(idDeck) {
+  if(selectedCard === undefined || selectedCard === null){
+    return
   }
+
+  console.log(idDeck)
+  console.log(selectedCard);
+
+  await deckService.addCard(idDeck, selectedCard.value)
 }
 
 function toggleAddCardForm(deckId) {
@@ -69,7 +72,7 @@ watch(decks, (newDecks) => {
               {{ card.name }}
             </option>
           </select>
-          <button @click="addCardToDeck" class="submit-btn">Add Card</button>
+          <button @click="addCardToDeck(deck.id)" class="submit-btn">Add Card</button>
         </div>
       </li>
     </ul>

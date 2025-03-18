@@ -11,7 +11,6 @@ const pokemon = ref([]);
 onMounted(async () => {
   const cardService = new CardService();
   pokemon.value = await cardService.getOneCard(props.id);
-  console.log(pokemon.value);
 });
 </script>
 

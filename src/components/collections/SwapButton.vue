@@ -17,24 +17,15 @@ const props = defineProps({
 
 async function swap(){
 
-  /*
-  cards.value = localService.getCardsByBooster()
-  const nbCards = localService.getNbOccurences()
-
-  if(nbCards < 4 || nbCards === null){
+  if(props.cards.length !== 4){
     isSwappable.value = false
     return
   }
 
-  for(let i = 0; i < 4; i++){
-    const index = Math.floor(Math.random() * cards.value.length);
-    if(localService.deleteCardByBooster(cards.value[index].id)){
-      console.log("Delete du tableau")
-      cards.value.splice(index, 1);
-    }
-  }
+  props.cards.forEach((card)=>{
+    localService.deleteCardByBooster(card.id)
+  })
 
-  console.log(cards.value)
   const indexPagination = Math.floor(Math.random() * 10);
   const indexPokemon = Math.floor(Math.random() * 99);
 
@@ -44,8 +35,8 @@ async function swap(){
   localService.addCardGetByBooster(newCard)
   cards.value.push(newCard)
   messageSuccess.value = newCard.name
-   */
 
+  cards.value = localService.getCardsByBooster()
   emit("swap", cards.value)
 }
 

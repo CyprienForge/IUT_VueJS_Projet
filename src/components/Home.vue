@@ -18,14 +18,21 @@ onMounted(async () => {
 
 function recupFilteredCards(allCards) {
   filteredCards.value = allCards;
+  filteredCards.value = filteredCards.value.filter(card => card.image);
 }
 
 function recupSwap(allCards) {
   cardsGetByBooster.value = allCards;
+  currentSwapCards.value = []
 }
 
 function addSwap(card){
   if(currentSwapCards.value.length === 4){
+    return
+  }
+
+  const cardCount = currentSwapCards.value.filter(c => c.id === card.id).length;
+  if(localStorageService.getDoublon(card.id) <= cardCount){
     return
   }
   currentSwapCards.value.push(card);
@@ -50,7 +57,7 @@ function deleteCardOnSwap(card){
         <button @click="addSwap(card)">
           Ajouter au swap
         </button>
-        <PokemonDisplay :id="card.id" />
+        <PokemonDisplay :nbOccurences="localStorageService.getDoublon(card.id)" :id="card.id" />
       </div>
     </div>
     <div id="errorBlock" v-else>
@@ -90,6 +97,7 @@ h3{
   width: calc(20% - 20px);
   height: 500px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   box-sizing: border-box;

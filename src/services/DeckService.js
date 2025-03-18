@@ -29,18 +29,21 @@ export default class DeckService {
         const deck = await this.getOneDeck(deckId)
         let isPresent = false
 
-        console.log(deck.cards[0])
+        if(deck.cards !== undefined){
+            deck.cards.forEach(card => {
+                if(card === cardId) isPresent = true
+            })
 
-        deck.cards.forEach(card => {
-            if(card === cardId) isPresent = true
-        })
-
-        if(isPresent == true){
-            console.log("Carte déjà présente dans le deck !")
-            return false
+            if(isPresent == true){
+                console.log("Carte déjà présente dans le deck !")
+                return false
+            }
+            deck.cards.push(cardId)
         }
-
-        deck.cards.push(cardId)
+        else{
+            deck.cards = []
+            deck.cards.push(cardId)
+        }
 
         await this.service.update('https://67a87ca5203008941f6a09af.mockapi.io/api/foot/deck/' + deckId, deck)
 

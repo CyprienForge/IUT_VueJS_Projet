@@ -36,16 +36,16 @@ async function decrementPagination(event){
   bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
-  background-color: #f8f8f8; /* Couleur de fond claire */
-  border-radius: 25px; /* Coins arrondis pour une forme douce */
+  background-color: #f8f8f8;
+  border-radius: 25px;
   padding: 8px 20px;
   width: 250px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Ombre discrète */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 #navigation h4 {
   font-size: 1.5rem;
-  color: #333; /* Couleur du texte gris foncé pour une bonne lisibilité */
+  color: #333;
   margin: 0;
 }
 
@@ -59,7 +59,7 @@ async function decrementPagination(event){
 }
 
 .nav-button:hover {
-  background-color: #f0f0f0; /* Légère teinte lors du survol */
+  background-color: #f0f0f0;
 }
 
 .nav-button img {
@@ -68,11 +68,11 @@ async function decrementPagination(event){
 }
 
 .nav-button:hover img {
-  transform: scale(1.2); /* Zoom doux au survol */
+  transform: scale(1.2);
 }
 
 #navigation .nav-button:focus {
-  outline: none; /* Retirer le focus box */
+  outline: none;
 }
 </style>
 

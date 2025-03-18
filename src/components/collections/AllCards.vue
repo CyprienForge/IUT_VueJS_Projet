@@ -83,32 +83,10 @@ async function recupNewNumber(number){
   display: flex;
   justify-content: center;
   align-items: center;
-  box-sizing: border-box;  /* Assure que le padding ne modifie pas la largeur */
+  box-sizing: border-box;
 }
 
-/* Responsive : ajuster pour les petits Ã©crans */
-@media (max-width: 1200px) {
-  .box {
-    width: calc(25% - 20px); /* 4 cartes par ligne pour les Ã©crans plus petits */
-  }
-}
 
-@media (max-width: 900px) {
-  .box {
-    width: calc(33.33% - 20px); /* 3 cartes par ligne pour les Ã©crans encore plus petits */
-  }
-}
 
-@media (max-width: 600px) {
-  .box {
-    width: calc(50% - 20px); /* 2 cartes par ligne pour les petits Ã©crans */
-  }
-}
-
-@media (max-width: 400px) {
-  .box {
-    width: 100%; /* 1 carte par ligne pour les trÃ¨s petits Ã©crans */
-  }
-}
 
 </style>

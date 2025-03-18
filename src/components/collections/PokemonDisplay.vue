@@ -27,14 +27,14 @@ onMounted(async () => {
 
 <template>
   <div class="pokemon-container">
-    <!-- Lien vers la page détaillée du Pokémon -->
+
     <RouterLink :to="`/all/${props.id}`">
       <div class="pokemon-card" v-if="card">
         <img :src="`${card.image}/low.png`" alt="Pokemon Image" class="pokemon-image">
       </div>
     </RouterLink>
 
-    <!-- Formulaire d'ajout au deck -->
+
     <div v-if="isObtain" class="add-to-deck-container">
       <AddCardToDeck :id="props.id" />
     </div>
@@ -44,10 +44,10 @@ onMounted(async () => {
 <style scoped>
 .pokemon-container {
   display: flex;
-  flex-direction: column; /* Assure que l'image et le formulaire sont empilés verticalement */
-  align-items: center; /* Centre les éléments dans le conteneur */
+  flex-direction: column;
+  align-items: center;
   width: 100%;
-  margin-bottom: 20px; /* Ajoute un peu d'espace sous chaque carte */
+  margin-bottom: 20px;
 }
 
 .pokemon-card {
@@ -57,7 +57,7 @@ onMounted(async () => {
   padding: 20px;
   width: 200px;
   height: auto;
-  margin-bottom: 10px; /* Espace entre la carte et le formulaire */
+  margin-bottom: 10px;
   cursor: pointer;
   box-sizing: border-box;
 }

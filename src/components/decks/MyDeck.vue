@@ -20,11 +20,11 @@ onMounted(async () => {
   loading.value = false;
 });
 
-function recupNewDeck(newDeck) {
+async function recupNewDeck(newDeck) {
   const idDeck = Math.floor(Math.random() * 100000);
   newDeck.id = idDeck
   decks.value.push(newDeck);
-  location.reload();
+  decks.value = await deckService.getAllDecks();
 }
 
 async function addCardToDeck(idDeck) {

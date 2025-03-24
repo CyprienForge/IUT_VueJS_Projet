@@ -59,7 +59,7 @@ async function recupNewNumber(number){
 
   <div id="cards">
     <div v-for="card in allCards" :key="card.id" class="card" >
-      <PokemonDisplay :id="card.id"/>
+      <PokemonDisplay :nbOccurences="localStorageService.getDoublon(card.id)" :id="card.id"/>
     </div>
   </div>
 

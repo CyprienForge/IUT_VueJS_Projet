@@ -31,6 +31,9 @@ export default class LocalStorageService{
     }
 
     getDoublon(id){
+        if(localStorage.getItem('occurence-' + id) === undefined || localStorage.getItem('occurence-' + id) === null){
+            return 0
+        }
         return localStorage.getItem('occurence-' + id)
     }
 

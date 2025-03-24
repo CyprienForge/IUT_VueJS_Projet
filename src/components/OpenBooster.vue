@@ -74,7 +74,9 @@ async function storage(idBooster) {
   transform: scale(1.1);
 }
 
-
+body{
+  overflow-x: hidden;
+}
 
 .obtained-card {
   text-align: center;

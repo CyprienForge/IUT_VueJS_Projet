@@ -37,6 +37,7 @@ async function swap(){
   messageSuccess.value = newCard.name
 
   cards.value = localService.getCardsByBooster()
+  isSwappable.value = true
   emit("swap", cards.value)
 }
 

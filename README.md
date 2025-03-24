@@ -35,7 +35,7 @@ npm run build
 
     4.Mettre en place une classe/fichier de service LocalStorageService permettant de manipuler le LocalStorage de votre application 🟩
 
-    Nous avons fait le choix d'ajouter 2 classe/fichier de service (BoosterService et DeckService) pour une gestion plus précise.
+    
 
 
 ### Socle fonctionnel
@@ -47,30 +47,45 @@ npm run build
     3.Sur la page All cards, vous listerez l'ensemble des cartes de l'API des cartes en affichant leur nom 🟩
 
     4.Au clic sur le nom de la carte, vous devrez afficher le nom, l'image et les types de la carte (si la carte ne possède pas d'image, vous devrez utiliser un placeholder de votre choix 🟩
-    Nous avons égalemment affiché les autres informations de la carte à savoir le nombre de HP et ses attaques.
+    
 
     5.Sur la page My decks vous listerez l'ensemble des decks présents sur l'API des decks en affichant leur nom 🟩
-    Nous avons créé une API pour les decks que nous partageons avec le groupe Hugo Sperry et Tommy Nguyen.
+    
 
     6.Sur la page My decks vous aurez la possibilité d'ajouter un deck. Un deck est composé d'un name, d'un idUser (que vous devrez générer aléatoirement entre 1 et 10) et d'une liste de cards (qui correspond à l'id d'une carte). Tous les champs sont obligatoires 🟩
-    La création de deck se fait uniquement avec un nom obligatoire, un idUser est attribué aléatoirement et le deck est créé vide. 
+    
 
     7.Au clic sur un deck, vous devrez rediriger l'utilisateur sur la page du deck et afficher le nom du deck ainsi que toutes les cartes du deck (nom + image) 🟩
 
     8.Sur la page Open a booster vous devrez afficher les boosters présents dans l'API. Au clic sur le nom d'un booster vous devrez récupérer aléatoirement une carte présente dans ce dernier et la stocker dans le LocalStorage (des doublons peuvent être obtenus via les boosters) 🟩
-    Nous avons décidé d'afficher seulement les 3 premiers boosters mais ils sont bien tous récuperés.  
+    
 
     9.Sur la page Home vous listerez les cartes qui ont été obtenues en ouvrant des boosters ainsi que la quantité de chacune (des doublons peuvent être obtenus via les boosters) 🟧
 
     10.Sur la page All Cards, mettre en place une pagination (via l'API) en ne récupérant par défaut que 100 cartes avec 10 cartes par pages 🟩
 
     11.Sur la page All Cards, via une liste déroulante, l'utilisateur pourra choisir le nombre de cartes par page (choix entre 10, 25, 50 et toutes). Ce choix devra être conserver 🟩
-    Nous n'avons pas mis le choix d'afficher toutes les cartes car cela était bien trop lourd.
+    
 
     12.Pour créer un deck, vous devrez lister l'ensemble de vos cartes obtenues (affichages du nom et de l'image) 🟥
 
     13.Sur la page permettant de créer un deck, vous mettrez en place un champ de recherche filtrant les cartes obtenues dans les boosters via le nom ou l'id. 🟩
-    La barre de recherche est dans Home où se trouve notre collection de cartes et non dans la page de création de deck.
+   
 
     14.Mettez en place une fonctionnalité permettant de détruire 4 de vos cartes afin d'obtenir une nouvelle carte qui s'ajoutera autoamtiquement à votre collection 🟧
 
+### Ajouts Personnels:
+
+    - Nous avons fait le choix d'ajouter 2 classe/fichier de service (BoosterService et DeckService) pour une gestion plus précise.
+
+    - Nous avons égalemment affiché les autres informations de la carte à savoir le nombre de HP et ses attaques.
+
+    - Nous avons créé une API pour les decks.
+
+    - La création de deck se fait uniquement avec un nom obligatoire, un idUser est attribué aléatoirement et le deck est créé vide. 
+
+    - Nous avons décidé d'afficher seulement les 3 premiers boosters mais ils sont bien tous récuperés.  
+
+    - Nous n'avons pas mis le choix d'afficher toutes les cartes car cela était bien trop lourd.
+
+    -  La barre de recherche est dans Home où se trouve notre collection de cartes et non dans la page de création de deck.

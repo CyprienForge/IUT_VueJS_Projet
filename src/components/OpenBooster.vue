@@ -38,7 +38,6 @@ async function storage(idBooster) {
     <img @click="storage(1)" class="booster-image" style="cursor: pointer" src="../../public/booster1.png" :alt="booster1" />
     <img @click="storage(2)" class="booster-image" style="cursor: pointer" src="../../public/booster2.png" :alt="booster2" />
     <img @click="storage(3)" class="booster-image" style="cursor: pointer" src="../../public/booster3.webp" :alt="booster3" />
-
   </div>
 
   <div v-if="CardObtain" class="obtained-card">

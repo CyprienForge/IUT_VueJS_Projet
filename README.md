@@ -23,6 +23,8 @@ npm run build
 
     - Nous avons fait le choix d'ajouter 2 classe/fichier de service (BoosterService et DeckService) pour une gestion plus précise.
 
+    - Nous avons décidé d'afficher une image plutôt qu'un label dans le composant NavBar pour une meilleure immersion dans l'univers Pokémon. Cepndant notre LinkService renvoie bien un lien image et un label.
+
     - Nous avons égalemment affiché les autres informations de la carte à savoir le nombre de HP et ses attaques.
 
     - Nous avons créé notre propre MockAPI pour les decks.

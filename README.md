@@ -1,22 +1,31 @@
 # IUT_Vue_Project
 
-## Project Setup
+## Lancer le projet
 
 ```sh
 npm install
 ```
-
-### Compile and Hot-Reload for Development
-
 ```sh
 npm run dev
 ```
 
-### Compile and Minify for Production
-
 ```sh
 npm run build
 ```
+
+### Liste de fonctionnalités 
+
+    - Liste des pokémons que vous avez dans votre collection sur la page d'accueil 
+    - Cette liste peut-être parcourue à l'aide d'une barre de recherche sur le nom et sur les id des pokémons 
+    - Vous pouvez échanger 4 de vos pokémons (doublons compris) contre une autre carte au hasard
+    - Chaque pokémon peut-être ajouté à un deck
+    - Chaque pokémon est clickable pour visualiser de plus amples informations 
+    - Liste de tous les pokémons disponibles sur la deuxième page du menu 
+    - Cette page est paginée par défaut de 10 en 10 mais ceci peut-être modifié en haut de la page 
+    - Vous pouvez ouvrir des boosters dans la page boosters qui vous permettront d'ajouter des pokémons à votre collection
+    - Vous pouvez ensuite créer, supprimmer vos propres decks 
+    - Vous ne pouvez composer des decks qu'à partir de cartes possédées dans votre collection 
+    - Le tout avec une interface qui vous plonge dans l'univers de Pokémon et avec une expérience utilisateur plaisante.
 
 
 ### Ajouts Personnels / Différences au sujet :
